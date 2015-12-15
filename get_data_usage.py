@@ -1,10 +1,11 @@
+#!/usr/bin/python
 from bs4 import BeautifulSoup
 import urllib2
 
 MASTER_URL = "http://www.airtel.in/smartbyte-s/page.html"
 
 landing_page = urllib2.urlopen(MASTER_URL)
-for tags in BeautifulSoup(landing_page.read()).findAll('iframe'):
+for tags in BeautifulSoup(landing_page.read(), "lxml").findAll('iframe'):
 	URL = tags['src']
 
 opener = urllib2.build_opener()
